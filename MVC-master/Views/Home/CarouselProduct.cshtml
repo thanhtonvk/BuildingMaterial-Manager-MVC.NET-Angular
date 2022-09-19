@@ -1,0 +1,352 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/Content/Home/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/style.css"/>
+
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/dirPagination.js"></script>
+    <script src="~/App/Home/app.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+</head>
+<body ng-app="Home">
+<div ng-controller="HomeController" ng-init="GetProductCarousel()">
+
+<!-- SECTION -->
+<div class="section">
+<!-- container -->
+<div class="container">
+<!-- row -->
+<div class="row">
+<div class="col-md-4 col-xs-6">
+    <div class="section-title">
+        <h4 class="title">Đang giảm giá</h4>
+        <div class="section-nav">
+            <div id="slick-nav-3" class="products-slick-nav"></div>
+        </div>
+    </div>
+    <div class="products-widget-slick" data-nav="#slick-nav-3">
+        <div>
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductSelling[0].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductSelling[0].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductSelling[0].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductSelling[0].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductSelling[0].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductSelling[1].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductSelling[1].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductSelling[1].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductSelling[1].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductSelling[1].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductSelling[2].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductSelling[2].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductSelling[2].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductSelling[2].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductSelling[2].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- product widget -->
+        </div>
+
+        <div>
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductSelling[3].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductSelling[3].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductSelling[3].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductSelling[3].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductSelling[3].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductSelling[4].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductSelling[4].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductSelling[4].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductSelling[4].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductSelling[4].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductSelling[5].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductSelling[5].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductSelling[5].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductSelling[5].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductSelling[5].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- product widget -->
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 col-xs-6">
+    <div class="section-title">
+        <h4 class="title">Hot deal</h4>
+        <div class="section-nav">
+            <div id="slick-nav-4" class="products-slick-nav"></div>
+        </div>
+    </div>
+
+    <div class="products-widget-slick" data-nav="#slick-nav-4">
+        <div>
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductHotDeal[0].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductHotDeal[0].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductHotDeal[0].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductHotDeal[0].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductHotDeal[0].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductHotDeal[1].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductHotDeal[1].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductHotDeal[1].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductHotDeal[1].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductHotDeal[1].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductHotDeal[2].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductHotDeal[2].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductHotDeal[2].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductHotDeal[2].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductHotDeal[2].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- product widget -->
+        </div>
+
+        <div>
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductHotDeal[3].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductHotDeal[3].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductHotDeal[3].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductHotDeal[3].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductHotDeal[3].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductHotDeal[4].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductHotDeal[4].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductHotDeal[4].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductHotDeal[4].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductHotDeal[4].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductHotDeal[5].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductHotDeal[5].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductHotDeal[5].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductHotDeal[5].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductHotDeal[5].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- product widget -->
+        </div>
+    </div>
+</div>
+
+<div class="clearfix visible-sm visible-xs"></div>
+
+<div class="col-md-4 col-xs-6">
+    <div class="section-title">
+        <h4 class="title">Nổi bật</h4>
+        <div class="section-nav">
+            <div id="slick-nav-5" class="products-slick-nav"></div>
+        </div>
+    </div>
+
+    <div class="products-widget-slick" data-nav="#slick-nav-5">
+        <div>
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductOnTop[0].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductOnTop[0].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductOnTop[0].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductOnTop[0].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductOnTop[0].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductOnTop[1].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductOnTop[1].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductOnTop[1].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductOnTop[1].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductOnTop[1].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductOnTop[2].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductOnTop[2].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductOnTop[2].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductOnTop[2].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductOnTop[2].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- product widget -->
+        </div>
+
+        <div>
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductOnTop[3].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductOnTop[3].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductOnTop[3].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductOnTop[3].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductOnTop[3].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductOnTop[4].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductOnTop[4].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductOnTop[4].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductOnTop[4].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductOnTop[4].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- /product widget -->
+
+            <!-- product widget -->
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="{{ProductOnTop[5].Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a ng-click="GetProduct(ProductOnTop[5].ID)" href="@Url.Action("DetailsProduct", "Home")">{{ProductOnTop[5].Name}}</a>
+                    </h3>
+                    <h4 class="product-price">{{ProductOnTop[5].Cost.toLocaleString("vi-VN")}} VNĐ<del class="product-old-price">{{(ProductOnTop[5].Cost*1.2).toLocaleString("vi-VN")}} VNĐ</del></h4>
+                </div>
+            </div>
+            <!-- product widget -->
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- /SECTION -->
+</div>
+</body>
+</html>

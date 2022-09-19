@@ -1,0 +1,452 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/dirPagination.js"></script>
+<script src="~/App/Home/app.js"></script>
+
+<div ng-app="Home">
+<div ng-controller="HomeController">
+<div ng-init="LoadProduct()">
+
+
+<div class="section">
+<!-- container -->
+<div class="container">
+<!-- row -->
+<div class="row">
+<!-- Product main img -->
+<div class="col-md-5 col-md-push-2">
+    <div id="product-main-img">
+        <div class="product-preview">
+            <img src="{{_Image}}" alt="">
+        </div>
+
+        <div class="product-preview">
+            <img src="{{ImageProductList[0].Image}}" alt="">
+        </div>
+        <div class="product-preview">
+            <img src="{{ImageProductList[1].Image}}" alt="">
+        </div>
+        <div class="product-preview">
+            <img src="{{ImageProductList[2].Image}}" alt="">
+        </div>
+    </div>
+</div>
+<!-- /Product main img -->
+
+<!-- Product thumb imgs -->
+<div class="col-md-2  col-md-pull-5">
+    <div id="product-imgs">
+        <div class="product-preview">
+            <img src="{{_Image}}" alt="">
+        </div>
+
+        <div class="product-preview">
+            <img src="{{ImageProductList[0].Image}}" alt="">
+        </div>
+        <div class="product-preview">
+            <img src="{{ImageProductList[1].Image}}" alt="">
+        </div>
+        <div class="product-preview">
+            <img src="{{ImageProductList[2].Image}}" alt="">
+        </div>
+
+    </div>
+</div>
+<!-- /Product thumb imgs -->
+
+<!-- Product details -->
+<div class="col-md-5">
+    <div class="product-details">
+        <h2 class="product-name">{{_Name}}</h2>
+        <div>
+            <h3 class="product-price">{{_Cost.toLocaleString('vi-VN')}} VNĐ</h3>
+        </div>
+        <ul>
+            <li>
+
+                <div>
+                    <span>✅ Tặng gói iCloud 50GB miễn phí 3 tháng </span>
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>✅ Thu cũ đổi mới trợ giá 15% </span>
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>✅ Bảo hành 2 năm chính hãng </span>
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>✅ Giảm 50% mua sim data khủng 90GB </span>
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>✅ Giảm ngay 100.000đ cho gói bảo hành vàng(rơi vỡ/vào nước) </span>
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>✅ Tặng phần mềm học tập online trị giá 300.000đ </span>
+                </div>
+            </li>
+        </ul>
+        <br/>
+        <div class="add-to-cart">
+            <button ng-click="AddCart(_ID)" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm giỏ hàng</button>
+        </div>
+
+        <ul class="product-btns">
+            <li>
+                <a href="#"><i class="fa fa-heart-o"></i> Thêm vào yêu thích</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!-- /Product details -->
+
+<!-- Product tab -->
+<div class="col-md-12">
+    <div id="product-tab">
+        <!-- product tab nav -->
+        <ul class="tab-nav">
+            <li class="active">
+                <a data-toggle="tab" href="#tab1">Mô tả</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#tab2">Chi tiết sản phẩm</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#tab3">Reviews</a>
+            </li>
+        </ul>
+        <!-- /product tab nav -->
+
+        <!-- product tab content -->
+        <div class="tab-content">
+            <!-- tab1  -->
+            <div id="tab1" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="txtDescription"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- /tab1  -->
+
+            <!-- tab2  -->
+            <div id="tab2" class="tab-pane fade in">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="txtDetails"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- /tab2  -->
+
+            <!-- tab3  -->
+            <div id="tab3" class="tab-pane fade in">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div id="rating">
+                            <div class="rating-avg">
+                                <span>4.5</span>
+                                <div class="rating-stars">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                            </div>
+                            <ul class="rating">
+                                <li>
+                                    <div class="rating-stars">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="rating-progress">
+                                        <div style="width: 80%;"></div>
+                                    </div>
+                                    <span class="sum">3</span>
+                                </li>
+                                <li>
+                                    <div class="rating-stars">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <div class="rating-progress">
+                                        <div style="width: 60%;"></div>
+                                    </div>
+                                    <span class="sum">2</span>
+                                </li>
+                                <li>
+                                    <div class="rating-stars">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <div class="rating-progress">
+                                        <div></div>
+                                    </div>
+                                    <span class="sum">0</span>
+                                </li>
+                                <li>
+                                    <div class="rating-stars">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <div class="rating-progress">
+                                        <div></div>
+                                    </div>
+                                    <span class="sum">0</span>
+                                </li>
+                                <li>
+                                    <div class="rating-stars">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <div class="rating-progress">
+                                        <div></div>
+                                    </div>
+                                    <span class="sum">0</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /Rating -->
+                    <!-- Reviews -->
+                    <div class="col-md-6" ng-init="GetReviewProductList()">
+                        <div id="reviews">
+                            <ul class="reviews">
+                                <li dir-paginate="item in ReviewProductList|itemsPerPage:3">
+                                    <div class="review-heading">
+                                        <h5 class="name">{{item.Name}}</h5>
+                                        <p class="date">{{item.Date}}</p>
+                                    </div>
+                                    <div class="review-body">
+                                        <p>{{item.Content}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <dir-pagination-controls
+                                    direction-links="true"
+                                    boundary-links="true"
+                                    on-page-change="pageChanged(newPageNumber)">
+                                </dir-pagination-controls>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /Reviews -->
+                    <!-- Review Form -->
+                    <div class="col-md-3">
+                        <div id="review-form">
+                            <form class="review-form">
+                                <input class="input" type="text" placeholder="Your Name" ng-model="_NamePerson">
+                                <input class="input" type="text" placeholder="Your Email" ng-model="_EmailPerson">
+                                <textarea class="input" placeholder="Your Review" ng-model="_ContentPerson"></textarea>
+                                <input type="button" id="btnSave" class="btn btn-danger" value="Bình luận" ng-click="InsertReivewProduct()"/>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /Review Form -->
+                </div>
+            </div>
+            <!-- /tab3  -->
+        </div>
+        <!-- /product tab content  -->
+    </div>
+</div>
+<!-- /product tab -->
+</div>
+<!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- /SECTION -->
+<hr/>
+<!-- Section -->
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">Sản phẩm liên quan</h3>
+                </div>
+            </div>
+            <!-- /section title -->
+
+            <!-- Products tab & slick -->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="products-tabs">
+                        <!-- tab -->
+                        <div id="tab2" class="tab-pane fade in active">
+                            <div class="products-slick" data-nav="#slick-nav-2">
+                                <!-- product -->
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="{{ProductList[0].Image}}" alt="">
+
+                                    </div>
+                                    <div class="product-body">
+                                        <h3 class="product-name">
+                                            <a type="button" class="quick-view" ng-click="GetProduct(ProductList[0].ID)" href="@Url.Action("DetailsProduct", "Home")" href="#">{{ProductList[0].Name}}</a>
+                                        </h3>
+                                        <h4 class="product-price">{{ProductList[0].Cost.toLocaleString(vi-VN)}} VNĐ</h4>
+                                        <hr/>
+                                        <div class="product-btns">
+                                            <a class="quick-view" ng-click="GetProduct(ProductList[0].ID)" href="@Url.Action("DetailsProduct", "Home")">
+                                                <i class="fa fa-eye"></i><span class="tooltipp">Thông tin sản phẩm</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="add-to-cart">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                                <!-- /product -->
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="{{ProductList[1].Image}}" alt="">
+
+                                    </div>
+                                    <div class="product-body">
+                                        <h3 class="product-name">
+                                            <a type="button" class="quick-view" ng-click="GetProduct(ProductList[1].ID)" href="@Url.Action("DetailsProduct", "Home")" href="#">{{ProductList[1].Name}}</a>
+                                        </h3>
+                                        <h4 class="product-price">{{ProductList[1].Cost.toLocaleString(vi-VN)}} VNĐ</h4>
+                                        <hr/>
+                                        <div class="product-btns">
+                                            <a class="quick-view" ng-click="GetProduct(ProductList[1].ID)" href="@Url.Action("DetailsProduct", "Home")">
+                                                <i class="fa fa-eye"></i><span class="tooltipp">Thông tin sản phẩm</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="add-to-cart">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                                <!-- /product -->
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="{{ProductList[2].Image}}" alt="">
+
+                                    </div>
+                                    <div class="product-body">
+                                        <h3 class="product-name">
+                                            <a type="button" class="quick-view" ng-click="GetProduct(ProductList[2].ID)" href="@Url.Action("DetailsProduct", "Home")" href="#">{{ProductList[2].Name}}</a>
+                                        </h3>
+                                        <h4 class="product-price">{{ProductList[2].Cost.toLocaleString(vi-VN)}} VNĐ</h4>
+                                        <hr/>
+                                        <div class="product-btns">
+                                            <a class="quick-view" ng-click="GetProduct(ProductList[2].ID)" href="@Url.Action("DetailsProduct", "Home")">
+                                                <i class="fa fa-eye"></i><span class="tooltipp">Thông tin sản phẩm</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="add-to-cart">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                                <!-- /product -->
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="{{ProductList[3].Image}}" alt="">
+
+                                    </div>
+                                    <div class="product-body">
+                                        <h3 class="product-name">
+                                            <a type="button" class="quick-view" ng-click="GetProduct(ProductList[3].ID)" href="@Url.Action("DetailsProduct", "Home")" href="#">{{ProductList[3].Name}}</a>
+                                        </h3>
+                                        <h4 class="product-price">{{ProductList[3].Cost.toLocaleString(vi-VN)}} VNĐ</h4>
+                                        <hr/>
+                                        <div class="product-btns">
+                                            <a class="quick-view" ng-click="GetProduct(ProductList[3].ID)" href="@Url.Action("DetailsProduct", "Home")">
+                                                <i class="fa fa-eye"></i><span class="tooltipp">Thông tin sản phẩm</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="add-to-cart">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                                <!-- /product -->
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="{{ProductList[4].Image}}" alt="">
+
+                                    </div>
+                                    <div class="product-body">
+                                        <h3 class="product-name">
+                                            <a type="button" class="quick-view" ng-click="GetProduct(ProductList[4].ID)" href="@Url.Action("DetailsProduct", "Home")" href="#">{{ProductList[4].Name}}</a>
+                                        </h3>
+                                        <h4 class="product-price">{{ProductList[0].Cost.toLocaleString(vi-VN)}} VNĐ</h4>
+                                        <hr/>
+                                        <div class="product-btns">
+                                            <a class="quick-view" ng-click="GetProduct(ProductList[4].ID)" href="@Url.Action("DetailsProduct", "Home")">
+                                                <i class="fa fa-eye"></i><span class="tooltipp">Thông tin sản phẩm</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="add-to-cart">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                                <!-- /product -->
+                            </div>
+                            <div id="slick-nav-2" class="products-slick-nav"></div>
+                        </div>
+                        <!-- /tab -->
+                    </div>
+                </div>
+            </div>
+            <!-- /Products tab & slick -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+</div>
+</div>
+</div>
+
+<script>
+document.getElementById("txtDescription").innerHTML =localStorage.getItem("Description");
+document.getElementById("txtDetails").innerHTML =localStorage.getItem("Details");
+</script>

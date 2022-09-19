@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/dirPagination.js"></script>
+<script src="~/App/Admin/Product/app.js"></script>
+<div ng-app="Product">
+    <div ng-controller="ProductController">
+        <div ng-init="LoadProduct()">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <div class="form-group col-md-8">
+                        <h6 class="label label-info">Tên sản phẩm: </h6>
+                        <p class="form-control">{{_Name}}</p>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <h6 class="label label-info">Meta-name: </h6>
+                        <p class="form-control">{{_MetaName}}</p>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <h6 class="label label-info">Giá bán: </h6>
+                        <p class="form-control">{{_Cost}}</p>
+                    </div>
+                    <div class="form-group col-md-8" ng-init="GetAllCategory()()">
+                        <h6 class="label label-info">Danh mục: </h6>
+                        <select ng-model="_Category"class="form-select" disabled>
+                            <option ng-repeat="x in CategoryList" value="{{x.ID}}">{{x.Name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-8" ng-init="GetAllBranch()">
+                        <h6 class="label label-info">Hãng sản xuất: </h6>
+                        <select ng-model="_Brand"class="form-select" disabled>
+                            <option ng-repeat="y in BranchList" value="{{y.ID}}">{{y.Name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <a href="@Url.Action("Index", "ImageProduct")" class="nav-link">
+                        <h6 class="label label-info">Quản lý hình ảnh sản phẩm </h6>
+                    </a>
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-80" src="{{_Image}}" alt="First slide">
+                            </div>
+                            <div class="carousel-item" ng-repeat="item in ImageProductList">
+                                <img class="d-block w-80" src="{{item.Image}}" alt="Second slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <h6 class="label label-info">Mô tả: </h6>
+                <p id="txtDescription"></p>
+            </div>
+            <div class="form-group">
+                <h6 class="label label-info">Thông tin chi tiết: </h6>
+                <p id="txtDetails"></p>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                    <h6 class="label label-default">Hot deals</h6>
+                    <select ng-model="_HotDeal" class="form-select" disabled>
+                        <option value="true">Có</option>
+                        <option value="false">Không</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                    <h6 class="label label-default">Bán chạy</h6>
+                    <select ng-model="_IsTopSeller"class="form-select" disabled>
+                        <option value="true">Có</option>
+                        <option value="false">Không</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                    <h6 class="label label-default">Trang đầu</h6>
+                    <select ng-model="_IsOnTop"class="form-select" disabled>
+                        <option value="true">Có</option>
+                        <option value="false">Không</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                    <h6 class="label label-default">Sản phẩm mới</h6>
+                    <select ng-model="_IsNew"class="form-select" disabled>
+                        <option value="true">Có</option>
+                        <option value="false">Không</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                    <h6 class="label label-default">Tình trạng</h6>
+                    <select ng-model="_IsStatus"class="form-select" disabled>
+                        <option value="true">Còn</option>
+                        <option value="false">Hết hàng</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById("txtDescription").innerHTML =localStorage.getItem("Description");
+document.getElementById("txtDetails").innerHTML =localStorage.getItem("Details");
+</script>

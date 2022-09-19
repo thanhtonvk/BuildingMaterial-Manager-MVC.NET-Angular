@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/dirPagination.js"></script>
+<script src="~/App/Admin/Product/app.js"></script>
+
+<div ng-app="Product">
+    @Html.Hidden("ID_")
+    <div ng-controller="ProductController" ng-init="GetAllProduct('')">
+        <div class="row">
+            <input class="col-md-4" id="txtSearch" placeholder="Nhập từ khóa cần tìm"/>
+            <input type="submit" value="Tìm kiếm" class="btn btn-success col-md-1" ng-click="GetAllProduct(document.getElementById('txtSearch').value.toString())"/>
+        </div>
+        <br/>
+        @Html.ActionLink("Thêm sản phẩm", "Create", "Product", null, new
+        {
+            @class = "btn btn-primary"
+        })
+        <table cellpadding="12" class="table-bordered table-hover table">
+            <tr>
+                <th>ID</th>
+                <th>Tên sản phẩm</th>
+                <th>Meta-name</th>
+                <th>Giá</th>
+                <th>Hình ảnh</th>
+                <th></th>
+            </tr>
+            <tr dir-paginate="item in ProductList|itemsPerPage:5">
+                <td>{{item.ID}}</td>
+                <td>{{item.Name}}</td>
+                <td>
+                    {{item.MetaName}}
+                </td>
+                <td>{{item.Cost}}</td>
+                <td>{{item.Image}}</td>
+                <td>
+                    <a class="btn btn-primary" ng-click="GetProduct(item.ID)" href="@Url.Action("Details","Product")">Thông tin chi tiết</a>
+                    <a href="@Url.Action("Update", "Product")" class="btn btn-warning" ng-click="GetProduct(item.ID)">Cập nhật</a>
+                    <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteProduct(item.ID)"/>
+                </td>
+            </tr>
+        </table>
+         <dir-pagination-controls
+                    max-size="5"
+                    direction-links="true"
+                    boundary-links="true"
+                    on-page-change="pageChanged(newPageNumber)">
+                </dir-pagination-controls>
+                   
+    </div>
+</div>

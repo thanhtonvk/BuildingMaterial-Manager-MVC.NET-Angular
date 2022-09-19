@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3a7cb5ae-bd3b-4c0f-a50b-88bf3e124223": {
+      "ProjectGuid": "3a7cb5ae-bd3b-4c0f-a50b-88bf3e124223",
+      "DisplayName": "Model",
+      "ColorIndex": 0
+    },
+    "eaa25ceb-d905-4b68-811a-f12a3d073f8a": {
+      "ProjectGuid": "eaa25ceb-d905-4b68-811a-f12a3d073f8a",
+      "DisplayName": "BaiTapLonMVC",
+      "ColorIndex": 1
+    },
+    "5137b7d5-c70c-4ab5-92c9-1ed661717969": {
+      "ProjectGuid": "5137b7d5-c70c-4ab5-92c9-1ed661717969",
+      "DisplayName": "Model",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "96f0b029-8adb-4e93-8ac4-6288b39aadd1": {
+      "ProjectGuid": "96f0b029-8adb-4e93-8ac4-6288b39aadd1",
+      "DisplayName": "Entities",
+      "ColorIndex": 3
+    },
+    "7ef99d25-28c0-49e9-a710-fe9e4f5ee9ff": {
+      "ProjectGuid": "7ef99d25-28c0-49e9-a710-fe9e4f5ee9ff",
+      "DisplayName": "Entities",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

@@ -1,0 +1,13 @@
+C:\Users\TonDZ\Downloads\MVC-master\Model\obj\Debug\Model.csproj.AssemblyReference.cache
+C:\Users\TonDZ\Downloads\MVC-master\Model\obj\Debug\Model.csproj.SuggestedBindingRedirects.cache
+C:\Users\TonDZ\Downloads\MVC-master\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\TonDZ\Downloads\MVC-master\Model\bin\Debug\Model.exe.config
+C:\Users\TonDZ\Downloads\MVC-master\Model\bin\Debug\Model.exe
+C:\Users\TonDZ\Downloads\MVC-master\Model\bin\Debug\Model.pdb
+C:\Users\TonDZ\Downloads\MVC-master\Model\bin\Debug\EntityFramework.dll
+C:\Users\TonDZ\Downloads\MVC-master\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\TonDZ\Downloads\MVC-master\Model\bin\Debug\EntityFramework.xml
+C:\Users\TonDZ\Downloads\MVC-master\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TonDZ\Downloads\MVC-master\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\TonDZ\Downloads\MVC-master\Model\obj\Debug\Model.exe
+C:\Users\TonDZ\Downloads\MVC-master\Model\obj\Debug\Model.pdb

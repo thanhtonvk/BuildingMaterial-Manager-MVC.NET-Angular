@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/dirPagination.js"></script>
+<script src="~/App/Admin/Branch/app.js"></script>
+<div ng-app="Branch">
+    @Html.Hidden("ID_")
+    <div ng-controller="BranchController" ng-init="GetAllBranch('')">
+        <div class="row">
+            <input class="col-md-4" id="txtSearch" placeholder="Nhập từ khóa cần tìm"/>
+            <input type="submit" value="Tìm kiếm" class="btn btn-success col-md-1" ng-click="GetAllBranch(document.getElementById('txtSearch').value.toString())"/>
+        </div>
+        <br/>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Thêm hãng
+        </button>
+        <table cellpadding="12" class="table-bordered table-hover table">
+            <tr>
+                <th>ID</th>
+                <th>Tên hãng sản xuất</th>
+                <th>Meta-name</th>
+                <th>Tùy chọn</th>
+            </tr>
+            <tr dir-paginate="item in BranchList|itemsPerPage:5">
+                <td>{{item.ID}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.MetaName}}</td>
+                <td>
+                    <input type="button" class="btn btn-warning" value="Cập nhật" ng-click="UpdateBranch(item)" data-toggle="modal" data-target="#exampleModalCenter"/>
+                    <input type="button" class="btn btn-danger" value="Xóa" ng-click="DeleteBranch(item)"/>
+                </td>
+            </tr>
+        </table>
+        <dir-pagination-controls
+            direction-links="true"
+            boundary-links="true"
+            on-page-change="pageChanged(newPageNumber)">
+        </dir-pagination-controls>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="txtTitile">Hãng</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <label class="col-md-4 control-label">Tên hãng sản xuất:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="Nhập hãng" ng-model="_Name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-4 control-label">Meta-name:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="Meta-Name" ng-model="_MetaName"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="button" id="btnSave" class="btn btn-primary" value="Thêm" ng-click="InsertBranch()"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

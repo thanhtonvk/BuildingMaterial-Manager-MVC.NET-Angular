@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/dirPagination.js"></script>
+<script src="~/App/Admin/Product/app.js"></script>
+
+@section jsFooter{
+    <script>
+        var description = CKEDITOR.replace('txt-Description', {
+            customConfig:'~/Scripts/ckeditor/config.js'
+        })
+        var detail = CKEDITOR.replace('txt-Detail', {
+                    customConfig:'~/Scripts/ckeditor/config.js'
+                })
+        $('#btn-select-image').on('click', function (e) {
+            e.preventDefault();
+            var finder =new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txt-Image').val(url);
+            };
+            finder.popup();
+        })
+    </script>
+}
+
+<div ng-app="Product">
+    <div ng-controller="ProductController">
+        <div class="form-group">
+            <h5 class="label label-default">Tên sản phẩm</h5>
+            <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" ng-model="_Name">
+        </div>
+
+        <div class="form-group">
+            <h5 class="label label-default">Meta-name</h5>
+            <input type="text" class="form-control" placeholder="Meta-name" ng-model="_MetaName">
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                <div ng-init="GetAllCategory()">
+                    <h5 class="label label-default">Danh mục</h5>
+                    <select ng-model="_Category"class="form-select">
+                        <option ng-repeat="x in CategoryList" value="{{x.ID}}">{{x.Name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-2 col-sm-2 col-lg-2" ng-init="GetAllBranch()">
+                <h5 class="label label-default">Hãng sản xuất</h5>
+                <select ng-model="_Brand"class="form-select">
+                    <option ng-repeat="y in BranchList" value="{{y.ID}}">{{y.Name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h5 class="label label-default">Giá sản phẩm</h5>
+            <input type="text" class="form-control" placeholder="Nhập giá" ng-model="_Cost">
+        </div>
+        <div class="form-group row">
+            <h5 class="label label-default">Hình ảnh</h5>
+            <input type="text" class="form-control col-md-2" id="txt-Image" ng-model="_Image" style="height: 40px;margin-left: 18px" placeholder="Đường dẫn">
+            <a id="btn-select-image" class="btn btn-success col-md-1">Chọn ảnh</a>
+        </div>
+
+        <div class="form-group">
+            <h5 class="label label-default">Mô tả</h5>
+            <textarea id="txt-Description" ng-model="_Description"></textarea>
+        </div>
+        <div class="form-group">
+            <h5 class="label label-default">Chi tiết sản phẩm</h5>
+            <textarea id="txt-Detail" ng-model="_Details"></textarea>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                <h5 class="label label-default">Hot deals</h5>
+                <select ng-model="_HotDeal" class="form-select">
+                    <option value="true">Có</option>
+                    <option value="false">Không</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                <h5 class="label label-default">Bán chạy</h5>
+                <select ng-model="_IsTopSeller"class="form-select">
+                    <option value="true">Có</option>
+                    <option value="false">Không</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                <h5 class="label label-default">Trang đầu</h5>
+                <select ng-model="_IsOnTop"class="form-select">
+                    <option value="true">Có</option>
+                    <option value="false">Không</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                <h5 class="label label-default">Sản phẩm mới</h5>
+                <select ng-model="_IsNew"class="form-select">
+                    <option value="true">Có</option>
+                    <option value="false">Không</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-sm-2 col-lg-2">
+                <h5 class="label label-default">Tình trạng</h5>
+                <select ng-model="_IsStatus"class="form-select">
+                    <option value="true">Còn</option>
+                    <option value="false">Hết hàng</option>
+                </select>
+            </div>
+        </div>
+        <a href="@Url.Action("Index", "Product")" type="button" class="btn btn-primary" ng-click="InsertProduct()">Thêm</a>
+    </div>
+</div>

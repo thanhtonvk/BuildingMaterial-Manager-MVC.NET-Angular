@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/dirPagination.js"></script>
+<script src="~/App/Admin/News/app.js"></script>
+
+<div ng-app="News">
+    @Html.Hidden("ID_")
+    <div ng-controller="NewsController" ng-init="GetAllNews('')">
+        <div class="row">
+            <input class="col-md-4" id="txtSearch" placeholder="Nhập từ khóa cần tìm"/>
+            <input type="submit" value="Tìm kiếm" class="btn btn-success col-md-1" ng-click="GetAllNews(document.getElementById('txtSearch').value.toString())"/>
+        </div>
+        <br/>
+        @Html.ActionLink("Thêm tin tức", "Create", "News", null, new
+        {
+            @class = "btn btn-primary"
+        })
+        <table cellpadding="12" class="table-bordered table-hover table">
+            <tr>
+                <th>ID</th>
+                <th>Tiêu đề</th>
+                <th>Hình ảnh</th>
+                <th>Tùy chọn</th>
+            </tr>
+            <tr dir-paginate="item in NewsList|itemsPerPage:5">
+                <td>{{item.ID}}</td>
+                <td>{{item.Titile}}</td>
+                <td>
+                    {{item.Image}}
+                </td>
+                <td>
+                    <a href="@Url.Action("Update", "News")" ng-click="GetNews(item.ID)" class="btn btn-warning" value="Update" >Cập nhật</a>
+                    <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteNews(item.ID)"/>
+                </td>
+            </tr>
+        </table>
+        <dir-pagination-controls
+            max-size="5"
+            direction-links="true"
+            boundary-links="true"
+            on-page-change="pageChanged(newPageNumber)">
+        </dir-pagination-controls>
+    </div>
+</div>

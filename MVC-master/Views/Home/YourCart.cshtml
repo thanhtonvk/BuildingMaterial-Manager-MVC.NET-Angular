@@ -1,0 +1,87 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <title>Electro - HTML Ecommerce Template</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/Content/Home/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Content/Home/css/style.css"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/dirPagination.js"></script>
+    <script src="~/App/Home/app.js"></script>
+</head>
+<body ng-app="Home">
+<div class="dropdown" ng-controller="HomeController" ng-init="GetListCart()" >
+    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-shopping-cart"></i>
+        <span>Giỏ hàng của bạn</span>
+        <div class="qty">{{CartList.length}}</div>
+    </a>
+    <div class="cart-dropdown">
+        <div class="cart-list">
+            <div class="product-widget" ng-repeat="item in CartList">
+                <div class="product-img">
+                    <img src="{{item.Image}}" alt="">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">
+                        <a href="#">{{item.NameProduct}}</a>
+                    </h3>
+                    <h4 class="product-price"><span class="qty">{{item.Quantity}}x</span>{{item.Cost.toLocaleString("vi-VN")}} VNĐ</h4>
+                </div>
+                <button  class="delete" ng-click="DeleteCart($index)">
+                    <i class="fa fa-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="cart-summary">
+            <small>{{CartList.length}} sản phẩm đã được chọn</small>
+            <div ng-init="GetSubTotal()">
+                 <h5 class="product-price">Tổng tiền: {{(subTotal*1.0).toLocaleString("vi-VN")}}VNĐ</h5>
+            </div>
+           
+        </div>
+        <div class="cart-btns">
+            <a href="@Url.Action("ShoppingCart","Home")">Xem giỏ hàng</a>
+            <a href="@Url.Action("CheckOut","Home")">Đặt hàng <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Home/js/jquery.min.js"></script>
+<script src="~/Content/Home/js/bootstrap.min.js"></script>
+<script src="~/Content/Home/js/slick.min.js"></script>
+<script src="~/Content/Home/js/nouislider.min.js"></script>
+<script src="~/Content/Home/js/jquery.zoom.min.js"></script>
+<script src="~/Content/Home/js/main.js"></script>
+</body>
+</html>

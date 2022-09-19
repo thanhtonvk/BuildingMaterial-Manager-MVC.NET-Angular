@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/dirPagination.js"></script>
+    <script src="~/App/Home/app.js"></script>
+</head>
+
+<body ng-app="Home">
+<div ng-controller="HomeController" ng-init="GetListCart()" class="container">
+    <div class="section-title">
+        <h3 class="title">Giỏ hàng của bạn</h3>
+    </div>
+    <table cellpadding="12" class="table">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Thành tiền</th>
+            <th>Tùy chọn</th>
+        </tr>
+        <tr ng-repeat="item in CartList">
+            <td>{{item.NameProduct}}</td>
+            <td>
+                <img src="{{item.Image}}" height="100"/>
+            </td>
+            <td class="row">
+                <div class="col-md-4">
+                    <input type="number" class="form-control" ng-model="item.Quantity">
+                </div>
+
+            </td>
+            <td>{{item.Cost.toLocaleString("vi-VN")}} VNĐ</td>
+            <td>{{(item.Cost*item.Quantity).toLocaleString("vi-VN")}} VNĐ</td>
+            <td>
+                <input type="button" class="btn btn-danger" value="Xóa" ng-click="DeleteCart($index)"/>
+                <a class="btn-success btn" ng-click="UpdateCart($index,item.Quantity)">Cập nhật</a>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Tổng tiền</th>
+            <th>
+                <div ng-init="GetSubTotal()">
+                    <h5 class="product-price">{{(subTotal*1.0).toLocaleString("vi-VN")}} VNĐ</h5>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>VAT</th>
+            <th>
+                <div ng-init="GetSubTotal()">
+                    <h5 class="product-price">{{(subTotal*0.1).toLocaleString("vi-VN")}} VNĐ</h5>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Tổng thanh toán</th>
+            <th>
+                <div ng-init="GetSubTotal()">
+                    <h5 class="product-price">{{(subTotal*1.1).toLocaleString("vi-VN")}} VNĐ</h5>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+
+            </th>
+            <th>
+
+
+            </th>
+            <th>
+                <a class="btn btn-primary" href="@Url.Action("CheckOut")">Tiến hành đặt hàng</a>
+            </th>
+        </tr>
+    </table>
+    <table class="table">
+
+    </table>
+
+
+</div>
+</body>
+</html>

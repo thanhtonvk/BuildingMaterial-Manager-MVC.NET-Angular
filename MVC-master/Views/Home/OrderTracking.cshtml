@@ -1,0 +1,290 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    
+body {
+    background-color: #eeeeee;
+
+}
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.10rem
+}
+
+.card-header:first-child {
+    border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+.track {
+    position: relative;
+    background-color: #ddd;
+    height: 7px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 60px;
+    margin-top: 50px
+}
+
+.track .step {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width: 25%;
+    margin-top: -18px;
+    text-align: center;
+    position: relative
+}
+
+.track .step.active:before {
+    background: #FF5722
+}
+
+.track .step::before {
+    height: 7px;
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    top: 18px
+}
+
+.track .step.active .icon {
+    background: #ee5435;
+    color: #fff
+}
+
+.track .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-radius: 100%;
+    background: #ddd
+}
+
+.track .step.active .text {
+    font-weight: 400;
+    color: #000
+}
+
+.track .text {
+    display: block;
+    margin-top: 7px
+}
+
+.itemside {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%
+}
+
+.itemside .aside {
+    position: relative;
+    -ms-flex-negative: 0;
+    flex-shrink: 0
+}
+
+.img-sm {
+    width: 80px;
+    height: 80px;
+    padding: 7px
+}
+
+ul.row,
+ul.row-sm {
+    list-style: none;
+    padding: 0
+}
+
+.itemside .info {
+    padding-left: 15px;
+    padding-right: 7px
+}
+
+.itemside .title {
+    display: block;
+    margin-bottom: 5px;
+    color: #212529
+}
+.btn-warning {
+    color: #ffffff;
+    background-color: #ee5435;
+    border-color: #ee5435;
+    border-radius: 1px
+}
+
+.btn-warning:hover {
+    color: #ffffff;
+    background-color: #ff2b00;
+    border-color: #ff2b00;
+    border-radius: 1px
+}
+</style>
+<div class="container" ng-app="Home">
+    <div ng-controller="HomeController" ng-init="GetCartByID()">
+        <article class="card">
+            <header class="card-header"> Trạng thái đơn hàng </header>
+            <div class="card-body">
+                <div class="track">
+                    <div class="step active">
+                        <span class="icon">
+                            <i class="fa fa-check"></i>
+                        </span> <span class="text">Xác nhận đơn hàng</span>
+                    </div>
+                    <div class="step active">
+                        <span class="icon">
+                            <i class="fa fa-user"></i>
+                        </span> <span class="text"> Chuẩn bị đơn hàng</span>
+                    </div>
+                    <div class="step">
+                        <span class="icon">
+                            <i class="fa fa-truck"></i>
+                        </span> <span class="text"> Đang giao hàng </span>
+                    </div>
+                    <div class="step">
+                        <span class="icon">
+                            <i class="fa fa-box"></i>
+                        </span> <span class="text">Nhận hàng</span>
+                    </div>
+                </div>
+                <hr>
+                <ul class="row">
+                    <li class="col-md-4" ng-repeat="item in ListCart">
+                        <figure class="itemside mb-3">
+                            <div class="aside">
+                                <img src="{{item.Image}}" class="img-sm border">
+                            </div>
+                            <figcaption class="info align-self-center">
+                                <p class="title">{{item.NameProduct}} <br> x{{item.Quantity}}</p> <span class="text-muted">{{(item.Quantity*item.Cost).toLocaleString("vi-VN")}}</span>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+
+                    <div class="col-md-7">
+                        <!-- Billing Details -->
+                        <div class="billing-details">
+                            <div class="section-title">
+                                <h3 class="title">Thông tin</h3>
+                            </div>
+                            <div class="form-group">
+                                <h5 >Mã đơn hàng: </h5>
+                                <input disabled class="form-control" type="text" ng-model="_ID">
+                            </div>
+                            <div class="form-group">
+                                <h5 >Họ: </h5>
+                                <input disabled class="form-control" type="text" ng-model="_FirstName">
+                            </div>
+                            <div class="form-group">
+                                <h5 >Tên: </h5>
+                                <input disabled class="form-control" type="text" ng-model="_LastName">
+                            </div>
+                            <div class="form-group">
+                                <h5 >Email liên hệ: </h5>
+                                <input disabled class="form-control" type="text" ng-model="_Email">
+                            </div>
+                            <div class="form-group">
+                                <h5 >Địa chỉ giao hàng </h5>
+                                <input disabled class="form-control" type="text" ng-model="_Address">
+                            </div>
+                            <div class="form-group">
+                                <h5 >SĐT liên hệ: </h5>
+                                <input disabled class="form-control" type="text" ng-model="_PhoneNumber">
+                            </div>
+                            <div class="form-group">
+                                <h5 >Ghi chú: </h5>
+                                <div class="order-notes">
+                                    <textarea disabled class="form-control" ng-model="_Note"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Billing Details -->
+                    </div>
+
+                    <!-- Order Details -->
+                    <div class="col-md-5 order-details">
+                        <div class="section-title text-center">
+                            <h3 class="title">Đơn hàng của bạn</h3>
+                        </div>
+                        <div class="order-summary">
+                            <div class="order-col">
+                                <div>
+                                    <strong>Sản phẩm</strong>
+                                </div>
+                                <div>
+                                    <strong>Thành tiền</strong>
+                                </div>
+                            </div>
+                            <div class="order-products">
+                                <div class="order-col" ng-repeat="item in ListCart">
+                                    <div>{{item.Quantity}}x {{item.NameProduct}}</div>
+                                    <div>{{item.Cost.toLocaleString("vi-VN")}} VNĐ</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="order-col">
+                                    <div>VAT(10%)</div>
+                                    <div>
+                                        <div>{{(subTotal*0.1).toLocaleString("vi-VN")}} VNĐ</div>
+                                    </div>
+                                </div>
+                                <div class="order-col">
+                                    <div>Shiping</div>
+                                    <div>
+                                        <strong>FREE</strong>
+                                    </div>
+                                </div>
+                                <div class="order-col">
+                                    <div>
+                                        <strong>Tổng</strong>
+                                    </div>
+                                    <div>
+                                        <strong class="order-total">{{(subTotal*1.1).toLocaleString("vi-VN")}}VNĐ</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="primary-btn order-submit" href="@Url.Action("Index", "Home")">Tiếp tục mua sắm</a>
+                        </div>
+                    </div>
+                    <!-- /Order Details -->
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /SECTION -->
+    </div>
+</div>

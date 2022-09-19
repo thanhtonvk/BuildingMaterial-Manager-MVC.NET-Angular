@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/dirPagination.js"></script>
+<script src="~/App/Admin/News/app.js"></script>
+
+@section jsFooter{
+    <script>
+        var editor = CKEDITOR.replace('txt-editor', {
+            customConfig:'~/Scripts/ckeditor/config.js'
+        })
+        $('#btn-select-image').on('click', function (e) {
+            e.preventDefault();
+            var finder =new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txt-Image').val(url);
+            };
+            finder.popup();
+        })
+    </script>
+}
+
+<div ng-app="News">
+    <div ng-controller="NewsController" ng-init="LoadNews()">
+        <div class="form-group">
+            <h5 class="label label-default">Tiêu đề</h5>
+            <input type="text" class="form-control" placeholder="Nhập tiêu đề" ng-model="_Titile">
+        </div>
+        <div class="form-group row">
+            <h5 class="label label-default">Hình ảnh</h5>
+            <input type="text" class="form-control col-md-2" id="txt-Image" ng-model="_Image" style="height: 40px;margin-left: 18px" placeholder="Đường dẫn">
+            <a id="btn-select-image" class="btn btn-success col-md-1">Chọn ảnh</a>
+        </div>
+        <div class="form-group">
+            <h5 class="label label-default">Nội dung</h5>
+            <textarea id="txt-editor" ng-model="_Content"></textarea>
+        </div>
+        <a href="@Url.Action("Index","News")" type="button" class="btn btn-primary" value="Thêm" ng-click="UpdateNews()">Cập nhật</a>
+    </div>
+    @Html.Hidden("ID_")
+</div>
